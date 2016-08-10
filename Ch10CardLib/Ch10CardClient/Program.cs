@@ -16,12 +16,7 @@ namespace Ch10CardClient
             myDeck.Shuffle();
             for (int i = 0; i < 52; i++)
             {
-                Card tempCard = myDeck.GetCard(i);
-                Write(tempCard.ToString());
-                if (i != 51)
-                    Write(", ");
-                else
-                    WriteLine();
+                WriteLine($"{i+1}. {myDeck.GetCard(i)}");
             }
             ReadKey();
         }
