@@ -84,7 +84,7 @@ namespace Ch11CardLib
                 assigned[sourceCard] = true;
                 newDeck.Add(cards[sourceCard]);
             }
-            newDeck.CopyTo(cards);
+            cards = (Cards) newDeck.Clone();
         }
     }
 }
