@@ -55,6 +55,19 @@ namespace Ch11CardClient
             WriteLine($"{card5.ToString()} > {card4.ToString()} ? {card5 > card4}");
             WriteLine($"{card4.ToString()} > {card5.ToString()} ? {card4 > card5}");
             ReadKey();
+
+            Deck deck1 = new Deck();
+            try
+            {
+                Card myCard = deck1.GetCard(60);
+            }
+            catch (SystemException e)
+            {
+                WriteLine(e.Message);
+                if(e is CardOutOfRangeException)
+                    WriteLine((e as CardOutOfRangeException).DeckContents[0]);
+            }
+            ReadKey();
         }
     }
 }
