@@ -7,6 +7,7 @@ namespace Ch11CardLib
 {
     public class Deck : ICloneable
     {
+        public event EventHandler LastCardDrawn;
         private Cards cards = new Cards();
 
         public Deck()
@@ -59,7 +60,11 @@ namespace Ch11CardLib
         public Card GetCard(int cardNum)
         {
             if (cardNum >= 0 && cardNum <= 51)
+            {
+                if ((cardNum == 51) && (LastCardDrawn != null))
+                    LastCardDrawn(this, EventArgs.Empty);
                 return cards[cardNum];
+            }     
             else
                 throw new CardOutOfRangeException(cards.Clone() as Cards);
         }
